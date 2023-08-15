@@ -7,7 +7,7 @@ namespace ManageClientAPI.Data.Interfaces
         Task Add(Category category);
         Task Update(Category category);
         Task Delete(Category category);
-        Task<Category> GetById(int id);
+        Task<Category> GetById(Guid id);
         Task<List<Category>> GetAll();
     }
 }

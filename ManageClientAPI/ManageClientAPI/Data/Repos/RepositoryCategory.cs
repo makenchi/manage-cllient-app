@@ -45,9 +45,9 @@ namespace ManageClientAPI.Data.Repos
             return await _context.Categories.ToListAsync();
         }
 
-        public async Task<Category> GetById(int id)
+        public async Task<Category> GetById(Guid id)
         {
-            return await _context.Categories.FindAsync(id);
+            return await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task Update(Category category)
