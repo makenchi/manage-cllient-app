@@ -1,15 +1,11 @@
+import axios from "axios";
 import { ICategory } from "./types/category";
 
-const baseUrl = "https://localhost:7039/api";
+const baseUrl = "http://localhost:5039/api";
 
 export const getAllCategories = async (): Promise<ICategory[]> =>{
-    const res = await fetch(`${baseUrl}/Category`,{
-        method:"GET",
-        headers:{
-            "Content-Type": "text/plain"
-        }
-    });
-    const categories = await res.json();
+    const res = await axios.get(`${baseUrl}/Category`);
+    const {data: categories} = res;
 
     return categories;
 }
