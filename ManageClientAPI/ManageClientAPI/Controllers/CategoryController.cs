@@ -24,7 +24,6 @@ namespace ManageClientAPI.Controllers
             {
                 Category category = new Category()
                 {
-                    Id = request.Id,
                     Name = request.Name
                 };
                 await _categoryService.addCategory(category);
@@ -43,7 +42,7 @@ namespace ManageClientAPI.Controllers
         }
 
         [HttpPatch]
-        public async Task<ActionResult<CategoryResponseDto>> Update(CategoryAddRequestDto request)
+        public async Task<ActionResult<CategoryResponseDto>> Update(CategoryUpdateRequestDto request)
         {
             CategoryResponseDto response = new CategoryResponseDto();
             try
