@@ -4,6 +4,6 @@ namespace ManageClientAPI.Dtos
 {
     public class CategoryListResponseDto
     {
-        List<Category> Categories { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }
