@@ -111,7 +111,9 @@ namespace ManageClientAPI.Controllers
             var category = await _categoryService.GetCategoryById(id);
             if (category != null)
             {
-                response.Categories.Add(category);
+                List<Category> categories = new List<Category>();
+                categories.Add(category);
+                response.Categories = categories;
             }
 
             return Ok(response);
@@ -123,7 +125,9 @@ namespace ManageClientAPI.Controllers
             CategoryListResponseDto response = new CategoryListResponseDto();
 
             var categories = await _categoryService.GetAllCategories();
-            response.Categories.AddRange(categories);
+            List<Category> categoryList = new List<Category>();
+            categoryList.AddRange(categories);
+            response.Categories = categoryList;
 
             return Ok(response);
         }

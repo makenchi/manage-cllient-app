@@ -42,12 +42,12 @@ namespace ManageClientAPI.Data.Repos
 
         public async Task<List<Category>> GetAll()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Categories.AsNoTracking().ToListAsync();
         }
 
         public async Task<Category> GetById(Guid id)
         {
-            return await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Categories.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task Update(Category category)
@@ -55,7 +55,7 @@ namespace ManageClientAPI.Data.Repos
             try
             {
                 _context.Categories.Update(category);
-                await _context.Categories.SingleAsync();
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
