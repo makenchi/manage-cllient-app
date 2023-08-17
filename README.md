@@ -10,7 +10,7 @@ Verifique se a connection string para o acesso do banco de dados está correta, 
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "server=.\\sqlexpress;database=usersdb;trusted_connection=true;TrustServerCertificate=True"
+    "DefaultConnection": "server=.\\sqlexpress;database=manageclientdb;trusted_connection=true;TrustServerCertificate=True"
   }
 }
 ```
