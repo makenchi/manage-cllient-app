@@ -20,7 +20,7 @@ namespace ManageClientAPI.Services
         public async Task<List<Category>> GetAllCategories()
         {
             var categories = await _repositoryCategory.GetAll();
-            return categories.ToList();
+            return categories.OrderBy(x => x.Name).ToList();
         }
 
         public async Task<Category> GetCategoryById(Guid id)

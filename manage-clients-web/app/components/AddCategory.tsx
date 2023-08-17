@@ -3,15 +3,23 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import Modal from "./Modal";
 import { useState } from "react";
+import { addCategory } from "@/api";
+import { useRouter } from "next/navigation";
 
 const AddCategory = () => {
+    const router = useRouter();
     const [modalOpen, setModalOpen] = useState<boolean>(false);
     const [newCategoryValue, setNewCategoryValue] = useState<string>("");
 
-    const handleSubmitNewCategory: FormEventHandler<HTMLFormElement> = (e) => {
+    const handleSubmitNewCategory: FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
-        console.log(newCategoryValue);
+        await addCategory({
+            id: "novo",
+            name: newCategoryValue
+        });
         setNewCategoryValue("");
+        setModalOpen(false);
+        router.refresh();
     };
 
     return (

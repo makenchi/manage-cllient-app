@@ -10,7 +10,6 @@ const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {
     return (
         <div className="overflow-x-auto">
             <table className="table w-full">
-                {/* head */}
                 <thead>
                     <tr>                
                         <th>Name</th>
