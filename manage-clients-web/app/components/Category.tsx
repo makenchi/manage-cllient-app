@@ -4,7 +4,7 @@ import {FiEdit, FiTrash2} from "react-icons/fi";
 import {useState} from "react";
 import Modal from "./Modal";
 import { useRouter } from "next/navigation";
-import { editCategory } from "@/api";
+import { deleteCategory, editCategory } from "@/api";
 
 interface CategoryProps {
     category: ICategoriy
@@ -27,6 +27,12 @@ const Category: React.FC<CategoryProps> = ({ category }) =>{
         router.refresh();
     };
 
+    const handleSubmitDeleteCategory = async (id:string) => {
+        await deleteCategory(id);
+        setOpenModalDelete(false);
+        router.refresh();        
+    }
+
     return(
         <tr key={category.id}>
             <td className="w-full">{category.name}</td>
@@ -41,7 +47,13 @@ const Category: React.FC<CategoryProps> = ({ category }) =>{
                         </div>
                     </form>
                 </Modal>                
-                <FiTrash2 cursor="pointer" className="text-red-500" size={25} />
+                <FiTrash2 onClick={() => setOpenModalDelete(true)} cursor="pointer" className="text-red-500" size={25} />
+                <Modal modalOpen={openMadelDelete} setModalOpen={setOpenModalDelete}>
+                    <h3 className="font-bold text-lg">Are you sure, you want delete this category?</h3>
+                    <div className="model-action flex flex-row mt-4">
+                        <button onClick={() => handleSubmitDeleteCategory(category.id)} className="btn">Yes</button>                        
+                    </div>                    
+                </Modal>
             </td>
         </tr>
     );

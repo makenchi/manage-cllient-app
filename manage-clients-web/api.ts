@@ -23,3 +23,9 @@ export const editCategory = async (category: ICategory): Promise<IResponse> => {
     const {data: updatedCategory} = res;
     return updatedCategory;
 }
+
+export const deleteCategory = async (category: string): Promise<IResponse> => {
+    const res = await axios.delete(`${baseUrl}/Category`,{ data: {id: category} });
+    const {data: deletedCategory} = res;
+    return deletedCategory;
+}
