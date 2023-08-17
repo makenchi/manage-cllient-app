@@ -1,9 +1,9 @@
 import axios from "axios";
-import { ICategory } from "./types/category";
+import { ICategories } from "./types/categories";
 
 const baseUrl = "http://localhost:5039/api";
 
-export const getAllCategories = async (): Promise<ICategory[]> =>{
+export const getAllCategories = async (): Promise<ICategories> =>{
     const res = await axios.get(`${baseUrl}/Category`);
     const {data: categories} = res;
 

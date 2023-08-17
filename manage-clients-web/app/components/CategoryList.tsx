@@ -1,30 +1,28 @@
+import { ICategories } from "@/types/categories";
 import React from "react";
+import Category from "./Category";
 
-const CategoryList = () => {
-    return(
+interface CategoryListProps {
+    categories: ICategories
+}
+
+const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {    
+    return (
         <div className="overflow-x-auto">
-        <table className="table">
-            {/* head */}
-            <thead>
-            <tr>                
-                <th>Name</th>
-            </tr>
-            </thead>
-            <tbody>
-            {/* row 1 */}
-            <tr>
-                <td>Cy Ganderton</td>
-            </tr>
-            {/* row 2 */}
-            <tr>
-                <td>Hart Hagerty</td>
-            </tr>
-            {/* row 3 */}
-            <tr>
-                <td>Brice Swyre</td>
-            </tr>
-            </tbody>
-        </table>
+            <table className="table w-full">
+                {/* head */}
+                <thead>
+                    <tr>                
+                        <th>Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>                    
+                    {categories.categories.map((category) => (
+                        <Category key={category.id} category={category}/>
+                    ))}
+                </tbody>
+            </table>
         </div>        
     );
 };
