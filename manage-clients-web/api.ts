@@ -17,3 +17,9 @@ export const addCategory = async (category: ICategory): Promise<IResponse> => {
     const {data: newCategory} = res;
     return newCategory;
 }
+
+export const editCategory = async (category: ICategory): Promise<IResponse> => {
+    const res = await axios.patch(`${baseUrl}/Category`,{id: category.id, name: category.name}, {headers: {'Content-Type':'application/json'}});
+    const {data: updatedCategory} = res;
+    return updatedCategory;
+}
